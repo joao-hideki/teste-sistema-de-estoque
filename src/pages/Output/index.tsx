@@ -1,17 +1,17 @@
 import { useContext, useState } from 'react';
 import { StockContext } from '../../contexts/StockContext';
 
-export function Entry() {
+export function Output() {
   const [selectedProductId, setSelectedProductId] = useState<string>('');
   const [productQuantity, setProductQuantity] = useState<string>('');
 
   const {movimentations, products, createNewMovimentation} = useContext(StockContext);
 
-  function registerNewMovimentation() {
+  function registerNewOutputMovimentation() {
     createNewMovimentation({
       productId: selectedProductId,
       quantity: productQuantity,
-      type: 'entry'
+      type: 'output'
     });
   }
 
@@ -32,7 +32,7 @@ export function Entry() {
           value={productQuantity}
           onChange={(e) => setProductQuantity(e.target.value)}
         />
-        <button onClick={registerNewMovimentation}>Cadastrar</button>
+        <button onClick={registerNewOutputMovimentation}>Registrar</button>
       </div>
       <table>
         <thead>
@@ -47,7 +47,7 @@ export function Entry() {
         </thead>
         <tbody>
           {movimentations
-            .filter((movimentations) => movimentations.type === 'entry')
+            .filter((movimentations) => movimentations.type === 'output')
             .map((movimentation) => (
               <tr key={movimentation.id}>
                 <td>{new Intl.DateTimeFormat('pt-BR').format(movimentation.createdAt)}</td>

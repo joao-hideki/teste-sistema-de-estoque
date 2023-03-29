@@ -10,7 +10,7 @@ export function Header() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/products">Produtos</NavLink>
           <NavLink to="/entrys">Entradas</NavLink>
-          <a href="">Saídas</a>
+          <NavLink to="/outputs">Saídas</NavLink>
         </div>
       </HeaderContent>
     </HeaderContainer>

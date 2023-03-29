@@ -58,22 +58,40 @@ const initialState: StockState = {
     weight: '43',
     category: 'Celular',
   }],
-  movimentations: [{
-    id: 'uuid',
-    type: 'entry',
-    product: {
-      id: Date.now(),
-      name: 'Iphone  X',
-      description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
-      imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
-      price: '800',
-      dimensions: '143.6 x 70.9 x 7.7 mm',
-      weight: '43',
-      category: 'Celular',
+  movimentations: [
+    {
+      id: uuidV4(),
+      type: 'entry',
+      product: {
+        id: Date.now(),
+        name: 'Iphone  X',
+        description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
+        imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
+        price: '800',
+        dimensions: '143.6 x 70.9 x 7.7 mm',
+        weight: '43',
+        category: 'Celular',
+      },
+      quantity: 10,
+      createdAt: new Date(),
     },
-    quantity: 10,
-    createdAt: new Date(),
-  }],
+    {
+      id: uuidV4(),
+      type: 'output',
+      product: {
+        id: Date.now(),
+        name: 'Iphone  X',
+        description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
+        imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
+        price: '800',
+        dimensions: '143.6 x 70.9 x 7.7 mm',
+        weight: '43',
+        category: 'Celular',
+      },
+      quantity: 7,
+      createdAt: new Date(),
+    },
+  ],
 };
 
 export function StockContextProvider({children}: StockContextProviderProps) {
