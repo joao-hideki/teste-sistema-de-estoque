@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { HeaderContainer, HeaderContent } from './styles';
 
 export function Header() {
@@ -6,9 +7,9 @@ export function Header() {
       <HeaderContent>
         <h1>IStock</h1>
         <div>
-          <a href="">Home</a>
-          <a href="">Produtos</a>
-          <a href="">Entradas</a>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/products">Produtos</NavLink>
+          <NavLink to="">Entradas</NavLink>
           <a href="">Saídas</a>
         </div>
       </HeaderContent>
