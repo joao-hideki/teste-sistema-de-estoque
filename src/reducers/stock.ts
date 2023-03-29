@@ -12,6 +12,11 @@ export function stockReducer(state: StockState, action: any): StockState {
       ...state,
       products: [...state.products, action.newProduct]
     };
+  case 'ADD_NEW_MOVIMENTATION':
+    return {
+      ...state,
+      movimentations: [...state.movimentations, action.newMovimentation]
+    };
   default:
     return state;
   }

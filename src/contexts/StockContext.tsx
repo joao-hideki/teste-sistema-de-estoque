@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useReducer } from 'react';
+import { v4 as uuidV4 } from 'uuid';
+import { stockReducer, StockState } from '../reducers/stock';
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   imagePath: string;
@@ -11,10 +13,19 @@ interface Product {
   category: string;
 }
 
+export interface Movimentation {
+  id: string;
+  type: 'entry' | 'output'
+  product: Product;
+  quantity: number;
+  createdAt: Date;
+}
+
 interface StockContextType {
   products: Product[];
-  movimentations: any[];
+  movimentations: Movimentation[];
   createNewProduct: (data: CreateProductData) => void;
+  createNewMovimentation: (data: any) => void;
 }
 
 export const StockContext = createContext({} as StockContextType);
@@ -23,10 +34,7 @@ interface StockContextProviderProps {
   children: ReactNode
 }
 
-interface StockState {
-  products: Product[];
-  movimentations: any[]
-}
+
 
 interface CreateProductData {
   name: string;
@@ -38,23 +46,21 @@ interface CreateProductData {
   category: string;
 }
 
-export function StockContextProvider({children}: StockContextProviderProps) {
-  const [stockState, dispatch] = useReducer((state: StockState, action: any) => {
-    switch (action.type) {
-    case 'ADD_NEW_PRODUCT':
-      console.log(state.products, 'jaisdjiasdisas');
-
-      console.log(action.newProduct);
-
-      return {
-        ...state,
-        products: [...state.products, action.newProduct]
-      };
-    default:
-      return state;
-    }
-  }, {
-    products: [{
+const initialState: StockState = {
+  products: [{
+    id: Date.now(),
+    name: 'Iphone  X',
+    description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
+    imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
+    price: '800',
+    dimensions: '143.6 x 70.9 x 7.7 mm',
+    weight: '43',
+    category: 'Celular',
+  }],
+  movimentations: [{
+    id: 'uuid',
+    type: 'entry',
+    product: {
       id: Date.now(),
       name: 'Iphone  X',
       description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
@@ -62,10 +68,15 @@ export function StockContextProvider({children}: StockContextProviderProps) {
       price: '800',
       dimensions: '143.6 x 70.9 x 7.7 mm',
       weight: '43',
-      category: 'Celular'
-    }],
-    movimentations: []
-  });
+      category: 'Celular',
+    },
+    quantity: 10,
+    createdAt: new Date(),
+  }],
+};
+
+export function StockContextProvider({children}: StockContextProviderProps) {
+  const [stockState, dispatch] = useReducer(stockReducer, initialState);
 
   const {products, movimentations} = stockState;
 
@@ -89,11 +100,30 @@ export function StockContextProvider({children}: StockContextProviderProps) {
     });
   }
 
+  function createNewMovimentation(data:any) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const product = products.find(item => item.id === Number(data.productId))!;
+
+    const newMovimentation: Movimentation = {
+      id: uuidV4(),
+      product: product,
+      quantity: data.quantity,
+      type: data.type,
+      createdAt: new Date()
+    };
+
+    dispatch({
+      type: 'ADD_NEW_MOVIMENTATION',
+      newMovimentation
+    });
+  }
+
   return(
     <StockContext.Provider value={{
       products,
       movimentations,
-      createNewProduct
+      createNewProduct,
+      createNewMovimentation
     }}>
       {children}
     </StockContext.Provider>
