@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Modal } from '../../components/Modal';
 import { StockContext } from '../../contexts/StockContext';
 
-export function Home() {
+export function Product() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [productName, setProductName] = useState<string>('');
   const [productImagePath, setProductImagePath] = useState<string>('');

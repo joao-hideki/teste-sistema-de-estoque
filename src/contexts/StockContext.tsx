@@ -46,6 +46,7 @@ interface CreateProductData {
   category: string;
 }
 
+// mock
 const initialState: StockState = {
   products: [{
     id: Date.now(),
