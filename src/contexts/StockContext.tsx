@@ -138,7 +138,7 @@ export function StockContextProvider({children}: StockContextProviderProps) {
     const newMovimentation: Movimentation = {
       id: uuidV4(),
       product: product,
-      quantity: data.quantity,
+      quantity: Number(data.quantity),
       type: data.type,
       createdAt: new Date()
     };
