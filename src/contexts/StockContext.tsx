@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useReducer } from 'react';
 
 interface Product {
-  id: string;
+  id: number;
   name: string;
   imagePath: string;
   description: string;
@@ -55,7 +55,7 @@ export function StockContextProvider({children}: StockContextProviderProps) {
     }
   }, {
     products: [{
-      id: '00312312093',
+      id: Date.now(),
       name: 'Iphone  X',
       description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
       imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
@@ -73,7 +73,7 @@ export function StockContextProvider({children}: StockContextProviderProps) {
     name, category, description, dimensions, imagePath, price, weight
   }: CreateProductData) {
     const newProduct: Product = {
-      id: 'hash',
+      id: Date.now(),
       name,
       description,
       imagePath,
