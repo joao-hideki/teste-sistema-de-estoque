@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { StockContext } from '../../contexts/StockContext';
+import { HomeContainer } from './styles';
 
 export function Home() {
   const {movimentations, products} = useContext(StockContext);
 
   return (
-    <div>
+    <HomeContainer>
       <table>
         <thead>
           <tr>
@@ -53,6 +54,6 @@ export function Home() {
           })}
         </tbody>
       </table>
-    </div>
+    </HomeContainer>
   );
 }

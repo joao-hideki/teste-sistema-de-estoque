@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Modal } from '../../components/Modal';
 import { StockContext } from '../../contexts/StockContext';
+import { ProductContainer } from './styles';
 
 export function Product() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -36,7 +37,7 @@ export function Product() {
   }
 
   return(
-    <div>
+    <ProductContainer>
       <Modal
         isOpen={isOpenModal}
         onClose={closeModal}
@@ -122,6 +123,6 @@ export function Product() {
           ))}
         </tbody>
       </table>
-    </div>
+    </ProductContainer>
   );
 }

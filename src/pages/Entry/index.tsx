@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { StockContext } from '../../contexts/StockContext';
+import { EntryContainer } from './styles';
 
 export function Entry() {
   const [selectedProductId, setSelectedProductId] = useState<string>('');
@@ -16,7 +17,7 @@ export function Entry() {
   }
 
   return (
-    <div>
+    <EntryContainer>
       <div>
         <select onChange={(e) => setSelectedProductId(e.target.value)}>
           <option>Selecione o produto</option>
@@ -65,6 +66,6 @@ export function Entry() {
           }
         </tbody>
       </table>
-    </div>
+    </EntryContainer>
   );
 }
