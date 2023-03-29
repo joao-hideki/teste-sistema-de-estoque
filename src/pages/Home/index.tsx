@@ -23,9 +23,6 @@ export function Home() {
               movimentation.product.id === product.id
             );
 
-            console.log(movimentationsByProduct);
-
-
             if (!movimentationsByProduct) return null;
 
             const productQuantityInStock = movimentationsByProduct.reduce(

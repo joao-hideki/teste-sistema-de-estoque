@@ -48,16 +48,28 @@ interface CreateProductData {
 
 // mock
 const initialState: StockState = {
-  products: [{
-    id: 32930,
-    name: 'Iphone  X',
-    description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
-    imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
-    price: '800',
-    dimensions: '143.6 x 70.9 x 7.7 mm',
-    weight: '43',
-    category: 'Celular',
-  }],
+  products: [
+    {
+      id: 32930,
+      name: 'Iphone  X',
+      description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
+      imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
+      price: '800',
+      dimensions: '143.6 x 70.9 x 7.7 mm',
+      weight: '43',
+      category: 'Celular',
+    },
+    {
+      id: 428237,
+      name: 'Cadeira Uni',
+      description: 'Uni, perfeita para mesas de escritório ou home office. Além de estilo, a Uni garante a postura correta que beneficia a circulação sanguínea do corpo.',
+      imagePath: 'https://assets.betalabs.net/production/flexform/item-images/99d132c62f29d957dae37e0ad4b9a95e.jpg',
+      price: '400',
+      dimensions: '1040 x 470 x 760 mm',
+      weight: '12',
+      category: 'Escritório',
+    },
+  ],
   movimentations: [
     {
       id: uuidV4(),

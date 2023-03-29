@@ -14,8 +14,6 @@ export function Product() {
 
   const {products, createNewProduct} = useContext(StockContext);
 
-  console.log(products, 'log Home');
-
 
   function openModal() {
     setIsOpenModal(true);
