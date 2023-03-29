@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { StockContext } from '../../contexts/StockContext';
+import { priceFormatter } from '../../utils/formatter';
 import { HomeContainer } from './styles';
 
 export function Home() {
@@ -47,8 +48,8 @@ export function Home() {
                 <td>{product.id}</td>
                 <td>{product.name}</td>
                 <td>{productQuantityInStock}</td>
-                <td>{product.price}</td>
-                <td>{Number(product.price) * productQuantityInStock}</td>
+                <td>{priceFormatter.format(Number(product.price))}</td>
+                <td>{priceFormatter.format(Number(product.price) * productQuantityInStock)}</td>
               </tr>
             );
           })}

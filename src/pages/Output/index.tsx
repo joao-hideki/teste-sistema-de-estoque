@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { StockContext } from '../../contexts/StockContext';
+import { priceFormatter } from '../../utils/formatter';
 import { OutputContainer } from './styles';
 
 export function Output() {
@@ -58,9 +59,9 @@ export function Output() {
                   />
                 </td>
                 <td>{movimentation.product.name}</td>
-                <td>{movimentation.product.price}</td>
+                <td>{priceFormatter.format(Number(movimentation.product.price))}</td>
                 <td>{movimentation.quantity}</td>
-                <td>{Number(movimentation.product.price) * movimentation.quantity}</td>
+                <td>{priceFormatter.format(Number(movimentation.product.price) * movimentation.quantity)}</td>
               </tr>
             ))
           }

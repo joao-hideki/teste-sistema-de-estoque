@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Modal } from '../../components/Modal';
 import { StockContext } from '../../contexts/StockContext';
+import { priceFormatter } from '../../utils/formatter';
 import { ProductContainer } from './styles';
 
 export function Product() {
@@ -115,7 +116,7 @@ export function Product() {
               <td>{product.id}</td>
               <td>{product.name}</td>
               <td>{product.description}</td>
-              <td>{product.price} reais</td>
+              <td>{priceFormatter.format(Number(product.price))}</td>
               <td>{product.dimensions}</td>
               <td>{product.weight}</td>
               <td>{product.category}</td>

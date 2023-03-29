@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { StockContext } from '../../contexts/StockContext';
+import { dateFormatter, priceFormatter } from '../../utils/formatter';
 import { EntryContainer } from './styles';
 
 export function Entry() {
@@ -51,16 +52,16 @@ export function Entry() {
             .filter((movimentations) => movimentations.type === 'entry')
             .map((movimentation) => (
               <tr key={movimentation.id}>
-                <td>{new Intl.DateTimeFormat('pt-BR').format(movimentation.createdAt)}</td>
+                <td>{dateFormatter.format(movimentation.createdAt)}</td>
                 <td>
                   <img
                     src={movimentation.product.imagePath} alt="" width={50} height={60}
                   />
                 </td>
                 <td>{movimentation.product.name}</td>
-                <td>{movimentation.product.price}</td>
+                <td>{priceFormatter.format(Number(movimentation.product.price))}</td>
                 <td>{movimentation.quantity}</td>
-                <td>{Number(movimentation.product.price) * movimentation.quantity}</td>
+                <td>{priceFormatter.format(Number(movimentation.product.price) * movimentation.quantity)}</td>
               </tr>
             ))
           }
