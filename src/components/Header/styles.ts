@@ -28,7 +28,7 @@ export const HeaderContent = styled.div`
       line-height: 5rem;
 
       &:hover {
-        color: green;
+        opacity: 0.5;
       }
 
       &.active {
