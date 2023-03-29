@@ -1,7 +1,97 @@
+import { useContext, useState } from 'react';
+import { Modal } from '../../components/Modal';
+import { StockContext } from '../../contexts/StockContext';
+
 export function Home() {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [productName, setProductName] = useState<string>('');
+  const [productImagePath, setProductImagePath] = useState<string>('');
+  const [productDescription, setProductDescription] = useState<string>('');
+  const [productPrice, setProductPrice] = useState<string>('');
+  const [productDimension, setProductDimension] = useState<string>('');
+  const [productWeight, setProductWeight] = useState<string>('');
+  const [productCategory, setProductCategory] = useState<string>('');
+
+  const {products, createNewProduct} = useContext(StockContext);
+
+  console.log(products, 'log Home');
+
+
+  function openModal() {
+    setIsOpenModal(true);
+  }
+
+  function closeModal() {
+    setIsOpenModal(false);
+  }
+
+  function addNewProduct() {
+    createNewProduct({
+      name: productName,
+      imagePath: productImagePath,
+      category: productCategory,
+      price: productPrice,
+      description: productDescription,
+      dimensions: productDimension,
+      weight: productWeight,
+    });
+  }
+
   return(
     <div>
-      <button>Cadastrar novo produto</button>
+      <Modal
+        isOpen={isOpenModal}
+        onClose={closeModal}
+      >
+        <div>
+          <input
+            type="text"
+            placeholder='Nome do produto'
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Link da imagem do produto'
+            value={productImagePath}
+            onChange={(e) => setProductImagePath(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Descrição'
+            value={productDescription}
+            onChange={(e) => setProductDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Preço'
+            value={productPrice}
+            onChange={(e) => setProductPrice(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Dimensão'
+            value={productDimension}
+            onChange={(e) => setProductDimension(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Peso'
+            value={productWeight}
+            onChange={(e) => setProductWeight(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder='Categoria'
+            value={productCategory}
+            onChange={(e) => setProductCategory(e.target.value)}
+          />
+          <br/>
+          <button onClick={addNewProduct}>Criar Novo Produto</button>
+        </div>
+      </Modal>
+
+      <button onClick={openModal}>Cadastrar novo produto</button>
       <table>
         <thead>
           <tr>
@@ -16,18 +106,22 @@ export function Home() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <img src="https://t2.tudocdn.net/287931?w=152&h=304" alt="" width={50} height={60}/>
-            </td>
-            <td>00312312093</td>
-            <td>Iphone  X</td>
-            <td>O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.</td>
-            <td>RS 800,00</td>
-            <td>143.6 x 70.9 x 7.7 mm</td>
-            <td>{174 / 1000} kg</td>
-            <td>Celular</td>
-          </tr>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>
+                <img
+                  src={product.imagePath} alt="" width={50} height={60}
+                />
+              </td>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.description}</td>
+              <td>{product.price} reais</td>
+              <td>{product.dimensions}</td>
+              <td>{product.weight}</td>
+              <td>{product.category}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
