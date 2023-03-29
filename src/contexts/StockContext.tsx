@@ -49,7 +49,7 @@ interface CreateProductData {
 // mock
 const initialState: StockState = {
   products: [{
-    id: Date.now(),
+    id: 32930,
     name: 'Iphone  X',
     description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
     imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
@@ -63,7 +63,7 @@ const initialState: StockState = {
       id: uuidV4(),
       type: 'entry',
       product: {
-        id: Date.now(),
+        id: 32930,
         name: 'Iphone  X',
         description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
         imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
@@ -79,7 +79,7 @@ const initialState: StockState = {
       id: uuidV4(),
       type: 'output',
       product: {
-        id: Date.now(),
+        id: 32930,
         name: 'Iphone  X',
         description: 'O Apple iPhone X é um smartphone iOS avançado e abrangente em todos os pontos de vista com algumas características excelentes.',
         imagePath: 'https://t2.tudocdn.net/287931?w=152&h=304',
